@@ -1,0 +1,44 @@
+<odoo>
+    <data>
+
+        <record id="view_approval_state_wizard" model="ir.ui.view">
+        <field name="name">approval.state.wizard.form</field>
+        <field name="model">approval.state.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Approve With Comment">
+                <sheet>
+                    <group>
+                        <field name="name" string="Comment"/>
+                    </group>
+                </sheet>
+                <footer>
+                    <button string="Confirm" name="action_generate" type="object" class="btn-primary"/>
+                    or
+                    <button string="Cancel" special="cancel" class="btn-primary"/>
+                </footer>
+            </form>
+        </field>
+        </record>
+
+
+        <record id="view_approval_state_reject_wizard" model="ir.ui.view">
+        <field name="name">approval.state.reject.wizard.form</field>
+        <field name="model">approval.state.reject.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Reject With Comment">
+                <sheet>
+                    <group>
+                        <field name="name" string="Comment"/>
+                    </group>
+                </sheet>
+                <footer>
+                    <button string="Confirm" name="action_reject_generate" type="object" class="btn-primary"/>
+                    or
+                    <button string="Cancel" special="cancel" class="btn-primary"/>
+                </footer>
+            </form>
+        </field>
+        </record>
+
+    </data>
+</odoo>

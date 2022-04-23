@@ -1,0 +1,115 @@
+<odoo>
+
+        <record id="template_mail_submits_resignation" model="mail.template">
+            <field name="name">Submits Resignation</field>
+            <field name="model_id" ref="x_hr_resignation.model_hr_resignation"/>
+            <field name="email_from">${object.employee_id.work_email}</field>
+            <field name="email_cc">Human.Capital@xapiens.id</field>
+            <field name="email_to"></field>
+            <field name="subject">${object.employee_id.name} Submits The Resignation.</field>
+            <field name="body_html" type="html">
+                <div style="margin: 0px; padding: 0px;">
+                    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+                        <b>Dear ${object.manager_id.name}</b>
+                        <p style='margin-top: 10px;'>
+                            Your Employee Mr/Mrs ${object.employee_id.name} has submitted the resignation. 
+                            <br/>
+                            Please check on link below :
+                            <p style='margin-top: 10px;'>
+                                <b><a style="padding: 5px 10px; color: #FFFFFF; text-decoration: none; background-color: #875A7B; border: 1px solid #875A7B; border-radius: 3px" href="${object.get_url()}">Visit</a></b>
+                            </p>
+                            <br/>
+                        </p>
+                        <br/>
+                        <b>Thank,</b>
+                    </p>
+                </div>
+            </field>
+        </record>
+
+
+        <record id="template_mail_approve_resignation" model="mail.template">
+            <field name="name">Resignation Asset Manager</field>
+            <field name="model_id" ref="x_hr_resignation.model_hr_resignation"/>
+            <field name="email_from">${object.manager_id.work_email}</field>
+            <field name="email_to"></field>
+            <field name="email_cc"></field>
+            <field name="subject">Please process the assets for ${object.employee_id.name}</field>
+            <field name="body_html" type="html">
+                <div style="margin: 0px; padding: 0px;">
+                    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+                        <b>Dear ${object.get_management_name()}</b>
+                        <p style='margin-top: 10px;'>
+                            Manager ${object.manager_id.name} has approved the resignation application. Please continue the process of returning the assets process for ${object.employee_id.name}.
+                            <br/>
+                            Please check on link below :
+                            <p style='margin-top: 10px;'>
+                                <b><a style="padding: 5px 10px; color: #FFFFFF; text-decoration: none; background-color: #875A7B; border: 1px solid #875A7B; border-radius: 3px" href="${object.get_url()}">Visit</a></b>
+                            </p>
+                            <br/>
+                        </p>
+                        <br/>
+                        <b>Thank,</b>
+                    </p>
+                </div>
+            </field>
+        </record>
+
+
+        <record id="template_mail_approve_resignation_hc" model="mail.template">
+            <field name="name">Resignation HC</field>
+            <field name="model_id" ref="x_hr_resignation.model_hr_resignation"/>
+            <field name="email_from">${object.get_management_mail()}</field>
+            <field name="email_cc"></field>
+            <field name="email_to"></field>
+            <field name="subject">Please process the resignation application ${object.employee_id.name}</field>
+            <field name="body_html" type="html">
+                <div style="margin: 0px; padding: 0px;">
+                    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+                        <b>Dear ${object.get_name_hc()}</b>
+                        <p style='margin-top: 10px;'>
+                            Asset Management Team has approved the resignation application. Please continue with the clearance form process.
+                            <br/>
+                            Please check on link below :
+                            <p style='margin-top: 10px;'>
+                                <b><a style="padding: 5px 10px; color: #FFFFFF; text-decoration: none; background-color: #875A7B; border: 1px solid #875A7B; border-radius: 3px" href="${object.get_url()}">Visit</a></b>
+                            </p>
+                            <br/>
+                        </p>
+                        <br/>
+                        <b>Thank,</b>
+                    </p>
+                </div>
+            </field>
+        </record>
+
+
+
+         <record id="template_mail_approve_resignation_done" model="mail.template">
+            <field name="name">Resignation Done</field>
+            <field name="model_id" ref="x_hr_resignation.model_hr_resignation"/>
+            <field name="email_from">${object.get_mail_hc()}</field>
+            <field name="email_cc">Human.Capital@xapiens.id</field>
+            <field name="email_to"></field>
+            <field name="subject">The resignation process ${object.employee_id.name} has been completed.</field>
+            <field name="body_html" type="html">
+                <div style="margin: 0px; padding: 0px;">
+                    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+                        <p style='margin-top: 10px;'>
+                            The resignation process ${object.employee_id.name} has been completed.
+                            <br/>
+                            Please check on link below :
+                            <p style='margin-top: 10px;'>
+                                <b><a style="padding: 5px 10px; color: #FFFFFF; text-decoration: none; background-color: #875A7B; border: 1px solid #875A7B; border-radius: 3px" href="${object.get_url()}">Visit</a></b>
+                            </p>
+                            <br/>
+                        </p>
+                        <br/>
+                        <b>Thank,</b>
+                    </p>
+                </div>
+            </field>
+        </record>
+
+
+</odoo>

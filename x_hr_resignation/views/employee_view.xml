@@ -1,0 +1,54 @@
+<odoo>
+	<data>
+<!-- 		    <record model="ir.ui.view" id="view_marital_status_form">
+		      <field name="name">view_marital_status_form</field>
+		      <field name="model">hr.employee</field>
+		      <field name="inherit_id" ref="hr.view_employee_form"/>
+		      <field name="arch" type="xml">
+		      	<xpath expr="//field[@name='work_location']" position="after" >
+		      		<field name="marital_status_id"/>
+		      	</xpath>
+		      </field>
+		  </record> -->
+
+			    <record id="marital_status_view_form" model="ir.ui.view">
+			        <field name="name">marital_status.form</field>
+			        <field name="model">marital.status</field>
+			        <field name="arch" type="xml">
+			            <form string="Employee Marital Status">
+			                <sheet>
+			                    <group>
+			                        <group>
+			                            <field name="name"/>
+			                        </group>
+			                    </group>
+			                </sheet>
+			            </form>
+			        </field>
+			    </record>
+
+			    <record id="employee_marital_status_view_tree" model="ir.ui.view">
+			        <field name="name">marital_status.tree</field>
+			        <field name="model">marital.status</field>
+			        <field name="arch" type="xml">
+			            <tree string="Employee Marital Status">
+			                <field name="name"/>
+			            </tree>
+			        </field>
+			    </record>
+
+			    <record id="action_marital_status" model="ir.actions.act_window">
+			        <field name="name">Marital Status</field>
+			        <field name="res_model">marital.status</field>
+			        <field name="view_mode">tree,form</field>
+			    </record>
+
+			    <menuitem
+			            id="marital_status_menu"
+			            action="action_marital_status"
+			            name="Marital Status"
+			            parent="hr.menu_human_resources_configuration"
+			            sequence="6"/>
+
+	</data>
+</odoo>

@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="employee_resignation_tree" model="ir.ui.view">
+            <field name="name">hr.resignation.tree</field>
+            <field name="model">hr.resignation</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <tree string="Employee Resignation">
+                    <field name="employee_id" />
+                    <field name="employee_id_number" />
+                    <field name="job_id" />
+                    <field name="department_id"/>
+                    <field name="manager_id"/>
+                    <field name='hire_date'/>
+                    <field name='resignation_current_date'/>
+                    <field name='termination_date'/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        <record id="employee_resignation_form" model="ir.ui.view">
+            <field name="name">hr.resignation.form</field>
+            <field name="model">hr.resignation</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <form string="Employee Resignation">
+                    <header>
+                    <widget name="attach_document" string="Attach Document" action="message_post" states='new' highlight="1" />
+                    <button string="Submit" type="object" name="action_submitted" confirm="Are you sure Submitted?" states='new' class="oe_highlight"/>
+                    
+                    <button string="Approve" type="object" name="action_resignation" groups="x_hr_resignation.manager_resignation" states='manager' class="oe_highlight"/>
+                    <button string="Reject" type="object" name="action_resignation_reject" groups="x_hr_resignation.manager_resignation" states='manager' class="oe_highlight"/>
+                    
+                    <button string="Approve" type="object" name="action_resignation" groups="x_hr_resignation.asset_manager_resignation" states='asset_management' class="oe_highlight"/>
+                    <button string="Reject" type="object" name="action_resignation_reject" groups="x_hr_resignation.asset_manager_resignation" states='asset_management' class="oe_highlight"/>
+
+
+                    <button string="Approve" type="object" name="action_resignation" groups="x_hr_resignation.hc_resignation" states='hc' class="oe_highlight"/>
+                    <button string="Reject" type="object" name="action_resignation_reject" groups="x_hr_resignation.hc_resignation" states='hc' class="oe_highlight"/>
+
+                    <field name="state" widget="statusbar" statusbar_visible="new,manager,asset_management,hc,done"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="action_get_attachment_view" class="oe_stat_button" icon="fa-file-text-o" type="object" attrs="{'invisible':[('attachment_number','=',0)]}">
+                            <field name="attachment_number" widget="statinfo" string="Documents" options="{'reload_on_button': true}"/>
+                            </button>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="employee_id" required='1'/>
+                                <field name="employee_id_number" required='1'/>
+                                <field name="job_id" required='1'/>
+                                <field name="department_id" required='1'/>
+                                <field name="manager_id" required='1'/>
+                            </group>
+                            <group>
+                                <field name='hire_date' required='1'/>
+                                <field name='resignation_current_date' required='1'/>
+                                <field name='termination_date' required='1'/>
+                                <field name='resignation_reason' />  
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Clearence Item">
+                                <group>
+                                    <field name="company_facility_equipment_ids">
+                                        <tree editable='button'>
+                                            <field name="sequence" widget="handle"/>
+                                            <field name="item_id" width="15"/>
+                                            <field name="description" width="15"/>
+                                            <field name="amount" width="10"/>
+                                            <field name="settlement_date" width="15"/>
+                                            <field name="checked_id" width="20" required="1"/>
+                                            <field name="employee_id" width="10" domain="[('checked_id','=',checked_id)]" required="1"/>
+                                            <field name="checked" width="15"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                                <group>
+                                    <field name="it_security_access_ids">
+                                        <tree editable='button'>
+                                            <field name="sequence" widget="handle"/>
+                                            <field name="item_id" width="15"/>
+                                            <field name="description" width="15"/>
+                                            <field name="amount" width="10"/>
+                                            <field name="settlement_date" width="15"/>
+                                            <field name="checked_id" width="20" required="1"/>
+                                            <field name="employee_id" width="10" domain="[('checked_id','=',checked_id)]" required="1"/>
+                                            <field name="checked" width="15"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                                <group>
+                                    <field name="settlement_balance_of_loan_ids">
+                                        <tree editable='button'>
+                                            <field name="sequence" widget="handle"/>
+                                            <field name="item_id" width="15"/>
+                                            <field name="description" width="15"/>
+                                            <field name="amount" width="10"/>
+                                            <field name="settlement_date" width="15"/>
+                                            <field name="checked_id" width="20" required="1"/>
+                                            <field name="employee_id" width="10" domain="[('checked_id','=',checked_id)]" required="1"/>
+                                            <field name="checked" width="15"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                                <group>
+                                    <field name="hc_operations_ids">
+                                        <tree editable='button'>
+                                            <field name="sequence" widget="handle"/>
+                                            <field name="item_id" width="15"/>
+                                            <field name="description" width="15"/>
+                                            <field name="amount" width="10"/>
+                                            <field name="settlement_date" width="15"/>
+                                            <field name="checked_id" width="20" required="1"/>
+                                            <field name="employee_id" width="10" domain="[('checked_id','=',checked_id)]" required="1"/>
+                                            <field name="checked" width="15"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page>
+                            <page string='Transfer Job'>
+                                <field name="transfer_job_ids">
+                                    <tree editable='button'>
+                                        <field name="sequence" widget="handle"/>    
+                                        <field name="item_id" width="30"/>
+                                        <field name="employee_id" width="30"/>
+                                        <field name="veryfied_by_manager" width="40"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Approval History" >
+                                <field name="approval_history_ids">
+                                    <tree create="false">
+                                        <field name="state"/>
+                                        <field name="user_id"/>
+                                        <field name="comment"/>
+                                        <field name="date" invisible="1"/>
+                                        <field name="create_date" string="Date"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+        
+        <record model="ir.actions.act_window" id="view_employee_resignation">
+            <field name="name">Employee Resignation</field>
+            <field name="res_model">hr.resignation</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Employee Resignation Form
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="employee_resignation" 
+                  name="Resignation"
+                  groups="base.group_user"
+                  web_icon="x_hr_resignation,static/description/resignation_web.png"
+                  sequence="21"/>
+                  
+        <menuitem id="employee_request"
+                  parent="employee_resignation" 
+                  name="Resignation Request"
+                  groups="base.group_user" 
+                  sequence="1"/>
+
+        <menuitem id="employee_resignation_request" 
+                  parent="employee_request" 
+                  name="Employee Resignation"
+                  action="view_employee_resignation" 
+                  groups="base.group_user" 
+                  sequence="1"/>
+    </data>
+</odoo>
+
+

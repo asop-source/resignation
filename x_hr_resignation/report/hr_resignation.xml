@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+
+        <record id="paperformat_report_hr_resignation" model="report.paperformat">
+              <field name="name">F4 new</field>
+              <field name="default" eval="True" />
+              <field name="format">Folio</field>
+              <field name="page_height">0</field>
+              <field name="page_width">0</field>
+              <field name="orientation">Portrait</field>
+              <field name="margin_top">2</field>
+              <field name="margin_bottom">2</field>
+              <field name="margin_left">2</field>
+              <field name="margin_right">2</field>
+              <field name="header_line" eval="False" />
+              <field name="header_spacing">0</field>
+              <field name="dpi">90</field>
+          </record>
+
+        <report 
+            id="doc_report_hr_resignation"
+            string="Print Out Employee Resignation"
+            model="hr.resignation"
+            report_type="qweb-pdf"
+            paperformat="x_hr_resignation.paperformat_report_hr_resignation"
+            file="x_hr_resignation.report_hr_resignation" 
+            name="x_hr_resignation.report_hr_resignation"/>
+
+
+
+        <template id="report_hr_resignation">
+          <t t-foreach="docs" t-as="doc">
+              <t t-call="web.html_container">
+                <t t-call="x_hr_resignation.docs_eport_hr_resignation"/>
+              </t>
+            </t>
+        </template>
+
+        <template id="docs_eport_hr_resignation">
+          <t t-call="web.basic_layout">
+            <div class="page">
+              <br/>
+              <br/>
+              <thead>
+                  <h4 style="text-align:center;">PT.XAPIENS TEKNOLOGI INDONESIA</h4>
+                  <h4 style="text-align:center; margin-top: -10px;">CLEARANCE SHEET FORM</h4>
+              </thead>
+              <br/>
+              <br/>
+              <table>
+                <tr>
+                    <td width="200px">Employee Name *</td>
+                    <td width="10px">:</td>
+                    <td width="300px"><span t-field="doc.employee_id.name"/></td>
+                    <td width="200px"></td>
+                    <td width="10px"></td>
+                    <td></td>
+                </tr>
+                 <tr>
+                    <td>Employee ID Number *</td>
+                    <td>:</td>
+                    <td><span t-field="doc.employee_id_number"/></td>
+                    <td>Hire Date</td>
+                    <td>:</td>
+                    <td><span t-field="doc.hire_date"/></td>
+                </tr>
+                 <tr>
+                    <td>Position *</td>
+                    <td>:</td>
+                    <td><span t-field="doc.job_id.name"/></td>
+                    <td>Resignation Letter Date</td>
+                    <td>:</td>
+                    <td><span t-field="doc.resignation_current_date"/></td>
+                </tr>
+                 <tr>
+                    <td>Department *</td>
+                    <td style="text-left">:</td>
+                    <td><span t-field="doc.department_id.name"/></td>
+                    <td>Termination Date</td>
+                    <td>:</td>
+                    <td><span t-field="doc.termination_date"/></td>
+                </tr>
+                <tr>
+                    <td>Resignation Reason</td>
+                    <td style="text-left">:</td>
+                    <td><span t-field="doc.resignation_reason"/></td>
+                </tr>
+                
+              </table>
+              <br/>
+              <br/>
+              <b>CLEARENCE ITEM :</b>
+              <table class="table" style="width: 100%">
+                <thead>
+                    <tr>
+                      <th style="border: 1px solid black;" class="text-center">No</th>
+                      <th style="border: 1px solid black;" class="text-center">Item</th>
+                      <th style="border: 1px solid black;" class="text-center">Description</th>
+                      <th style="border: 1px solid black;" class="text-center">Amount</th>
+                      <th style="border: 1px solid black;" class="text-center">Settlement Date</th>
+                      <th style="border: 1px solid black;" colspan="2" class="text-center">Checked &amp; Received By</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                      <th style="border-top: double black; border-left: 1px solid black; border-right: 1px solid black;" class="text-center">1</th>
+                      <th style="border-top: double black; border-left: 1px solid black; border-right: 1px solid black;">Company Facility Equipment</th>
+                      <th style="border-top: double black; border-left: 1px solid black; border-right: 1px solid black;" class="text-center"></th>
+                      <th style="border-top: double black; border-left: 1px solid black; border-right: 1px solid black;" class="text-center"></th>
+                      <th style="border-top: double black; border-left: 1px solid black; border-right: 1px solid black;" class="text-center"></th>
+                      <th style="border-top: double black; border-left: 1px solid black; border-right: 1px solid black;" class="text-center">PIC</th>
+                      <th style="border-top: double black; border-left: 1px solid black; border-right: 1px solid black;" class="text-center">Name &amp; Signature</th>
+                    </tr>
+                    <t t-foreach="doc.company_facility_equipment_ids" t-as="o">
+                      <tr>
+                        <th style="border-left: 1px solid black; border-right: 1px solid black;"></th>
+                        <th style="border-left: 1px solid black; border-right: 1px solid black;"><span t-field="o.item_id.name"/></th>
+                        <th style="border-left: 1px solid black; border-right: 1px solid black;"><span t-field="o.description"/></th>
+                        <th style="border-left: 1px solid black; border-right: 1px solid black;"><span t-field="o.amount"/></th>
+                        <th style="border-left: 1px solid black; border-right: 1px solid black;"><span t-field="o.settlement_date"/></th>
+                        <th style="border-left: 1px solid black; border-right: 1px solid black;"><span t-field="o.checked_id.name"/></th>
+                        <th style="border-left: 1px solid black; border-right: 1px solid black;"><span t-field="o.employee_id.name"/></th>
+                     </tr>
+                    </t>
+                </tbody>
+                 <tbody>
+                    <tr>
+                      <th style="border-top: 2px solid black; border-left: 1px solid black; border-right: 1px solid black;" class="text-center">2</th>
+                      <th style="border-top: 2px solid black; border-left: 1px solid black; border-right: 1px solid black;">IT Security Access</th>
+                      <th style="border-top: 2px solid black; border-left: 1px solid black; border-right: 1px solid black;" class="text-center"></th>
+                      <th style="border-top: 2px solid black; border-left: 1px solid black; border-right: 1px solid black;" class="text-center"></th>
+                      <th style="border-top: 2px solid black; border-left: 1px solid black; border-right: 1px solid black;" class="text-center"></th>
+                      <th style="border-top: 2px solid black; border-left: 1px solid black; border-right: 1px solid black;" class="text-center"></th>
+                      <th style="border-top: 2px solid black; border-left: 1px solid black; border-right: 1px solid black;" class="text-center"></th>
+                    </tr>
+                    <t t-foreach="doc.it_security_access_ids" t-as="o">
+                      <tr>
+                        <th style="border-left: 1px solid black; border-right: 1px solid black;"></th>
+                        <th style="border-left: 1px solid black; border-right: 1px solid black;"><span t-field="o.item_id.name"/></th>
+                        <th style="border-left: 1px solid black; border-right: 1px solid black;"><span t-field="o.description"/></th>
+                        <th style="border-left: 1px solid black; border-right: 1px solid black;"><span t-field="o.amount"/></th>
+                        <th style="border-left: 1px solid black; border-right: 1px solid black;"><span t-field="o.settlement_date"/></th>
+                        <th style="border-left: 1px solid black; border-right: 1px solid black;"><span t-field="o.checked_id.name"/></th>
+                        <th style="border-left: 1px solid black; border-right: 1px solid black;"><span t-field="o.employee_id.name"/></th>
+                     </tr>
+                    </t>
+                </tbody>
+                <tbody>
+                    <tr>
+                      <th style="border-top: 2px solid black; border-left: 1px solid black; border-right: 1px solid black;" class="text-center">3</th>
+                      <th style="border-top: 2px solid black; border-left: 1px solid black; border-right: 1px solid black;">Settlement Balance Of Loan</th>
+                      <th style="border-top: 2px solid black; border-left: 1px solid black; border-right: 1px solid black;" class="text-center"></th>
+                      <th style="border-top: 2px solid black; border-left: 1px solid black; border-right: 1px solid black;" class="text-center"></th>
+                      <th style="border-top: 2px solid black; border-left: 1px solid black; border-right: 1px solid black;" class="text-center"></th>
+                      <th style="border-top: 2px solid black; border-left: 1px solid black; border-right: 1px solid black;" class="text-center"></th>
+                      <th style="border-top: 2px solid black; border-left: 1px solid black; border-right: 1px solid black;" class="text-center"></th>
+                    </tr>
+                    <t t-foreach="doc.settlement_balance_of_loan_ids" t-as="o">
+                      <tr>
+                        <th style="border-left: 1px solid black; border-right: 1px solid black;"></th>
+                        <th style="border-left: 1px solid black; border-right: 1px solid black;"><span t-field="o.item_id.name"/></th>
+                        <th style="border-left: 1px solid black; border-right: 1px solid black;"><span t-field="o.description"/></th>
+                        <th style="border-left: 1px solid black; border-right: 1px solid black;"><span t-field="o.amount"/></th>
+                        <th style="border-left: 1px solid black; border-right: 1px solid black;"><span t-field="o.settlement_date"/></th>
+                        <th style="border-left: 1px solid black; border-right: 1px solid black;"><span t-field="o.checked_id.name"/></th>
+                        <th style="border-left: 1px solid black; border-right: 1px solid black;"><span t-field="o.employee_id.name"/></th>
+                     </tr>
+                    </t>
+                </tbody>
+                <tbody>
+                    <tr>
+                      <th style="border-top: 2px solid black; border-left: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black;" class="text-center">4</th>
+                      <th style="border-top: 2px solid black; border-left: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black;">HC Operationsn</th>
+                      <th style="border-top: 2px solid black; border-left: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black;" class="text-center"></th>
+                      <th style="border-top: 2px solid black; border-left: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black;" class="text-center"></th>
+                      <th style="border-top: 2px solid black; border-left: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black;" class="text-center"></th>
+                      <th style="border-top: 2px solid black; border-left: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black;" class="text-center"></th>
+                      <th style="border-top: 2px solid black; border-left: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black;" class="text-center"></th>
+                    </tr>
+                    <t t-foreach="doc.hc_operations_ids" t-as="o">
+                      <tr>
+                        <th style="border-left: 1px solid black; border-bottom: 1px solid black; border-right: 1px solid black;"></th>
+                        <th style="border-left: 1px solid black; border-bottom: 1px solid black; border-right: 1px solid black;"><span t-field="o.item_id.name"/></th>
+                        <th style="border-left: 1px solid black; border-bottom: 1px solid black; border-right: 1px solid black;"><span t-field="o.description"/></th>
+                        <th style="border-left: 1px solid black; border-bottom: 1px solid black; border-right: 1px solid black;"><span t-field="o.amount"/></th>
+                        <th style="border-left: 1px solid black; border-bottom: 1px solid black; border-right: 1px solid black;"><span t-field="o.settlement_date"/></th>
+                        <th style="border-left: 1px solid black; border-bottom: 1px solid black; border-right: 1px solid black;"><span t-field="o.checked_id.name"/></th>
+                        <th style="border-left: 1px solid black; border-bottom: 1px solid black; border-right: 1px solid black;"><span t-field="o.employee_id.name"/></th>
+                     </tr>
+                    </t>
+                </tbody>
+              </table>
+              <br/>
+              <b>TRANSFER JOBS:</b>
+              <table class="table" style="width: 100%">
+                <thead>
+                    <tr>
+                      <th style="border-left: 1px solid black; border-top: 2px solid black; border-bottom: 1px solid black; width:50px">No:</th>
+                      <th style="border-top: 2px solid black; border-bottom: 1px solid black; width:430px;" class="text-center">kind Of Job</th>
+                      <th style="border: 1px solid black;" class="text-center">Job Receiver</th>
+                      <th style="border: 1px solid black; width:30px;" class="text-center">Signature</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <t t-foreach="doc.transfer_job_ids" t-as="o">
+                      <tr>
+                      <th style="border-left: 1px solid black; border-right: 1px solid black;" class="text-center"><span t-esc="o_index + 1"/></th>
+                      <th style="border-left: 1px solid black; border-right: 1px solid black;"><span t-field="o.item_id.name"/></th>
+                      <th style="border-left: 1px solid black; border-right: 1px solid black;"><span t-field="o.employee_id.name"/></th>
+                      <th style="border-left: 1px solid black; border-right: 1px solid black;" class="text-center">
+                        <t t-if="o.veryfied_by_manager == True">
+                          &#10004;
+                          </t>
+                        </th>
+                      </tr>
+                    </t>
+                    <th style="border-top: double black;" class="text-center"></th>
+                    <th style="border-top: double black;" class="text-center"></th>
+                    <th style="border-top: double black;" class="text-center"></th>
+                    <th style="border-top: double black;" class="text-center"></th>
+                  </tbody>
+                </table>
+                <b>Notes :</b>
+                <table style="width: 100%">
+                  <thead>
+                    <tr>
+                      <td style='width:30px;'>1.</td>
+                      <td class="text-justify" style='width:400px;'>Company's obligation will be executed after Employee complete all responsibilities above.</td>
+                      <td style='width:50px;'></td>
+                      <td class="text-center" style="border: 1px solid black;" colspan='2'>Verified By</td>
+                      <td class="text-center" style="border: 1px solid black;">Issued By</td>
+                    </tr>
+                    <tr>
+                        <td style='width:30px;'>2.</td>
+                        <td class="text-justify">Clearence sheet shall be received by HC at the latest on the termination date.</td>
+                        <td></td>
+                        <td class="text-center" style="border: 1px solid black; width:150px;">HC</td>
+                        <td class="text-center" style="border: 1px solid black; width:150px;">Superior</td>
+                        <td class="text-center" style="border: 1px solid black; width:150px;">Employee</td>
+                    </tr>
+                    <tr>
+                      <td style='width:30px;'>3.</td>
+                      <td class="text-justify">ID Card. notebook, Car etc will be returned the last day Employee come to the office</td>
+                      <td></td>
+                      <td class="text-center" style="border-left: 1px solid black; border-right: 1px solid black;" rowspan="2"></td>
+                      <td class="text-center" style="border-left: 1px solid black; border-right: 1px solid black;" rowspan="2"></td>
+                      <td class="text-center" style="border-left: 1px solid black; border-right: 1px solid black;" rowspan="2"></td>
+                    </tr>
+                    <tr>
+                      <td style='width:30px;'>4.</td>
+                      <td class="text-justify">Email Account &amp; all access shall be delete upon resign date</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td style="border: 1px solid black;">Date:<span t-esc="docs.get_date_hc()"/></td>
+                      <td style="border: 1px solid black;">Date:<span t-esc="docs.get_date_manager()"/></td>
+                      <td style="border: 1px solid black;">Date:<span t-esc="docs.get_date_employee()"/></td>
+                    </tr>
+                  </thead>
+                </table>
+          </div>
+        </t>
+      </template>
+
+        
+        </data>
+    </odoo>

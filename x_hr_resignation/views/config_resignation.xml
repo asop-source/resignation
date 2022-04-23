@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_resignation_reason_form" model="ir.ui.view">
+            <field name="name">resignation_reason.form</field>
+            <field name="model">resignation.reason</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <form string="Checked Received">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_resignation_reason_tree" model="ir.ui.view">
+            <field name="name">resignation_reason.tree</field>
+            <field name="model">resignation.reason</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <tree >
+                    <field name="name" required="1"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record model="ir.actions.act_window" id="view_resignation_reason">
+            <field name="name">Resignation Reason</field>
+            <field name="res_model">resignation.reason</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Resignation Reason
+                </p>
+            </field>
+        </record>
+
+        <record id="view_checked_received_form" model="ir.ui.view">
+            <field name="name">checked.received.form</field>
+            <field name="model">checked.received</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <form string="Checked Received">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="employee_id" widget="many2many_tags"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_checked_received_tree" model="ir.ui.view">
+            <field name="name">checked.received.tree</field>
+            <field name="model">checked.received</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <tree >
+                    <field name="name" required="1"/>
+                    <field name="employee_id" required="1" widget="many2many_tags"/>            
+                </tree>
+            </field>
+        </record>
+
+
+        <record model="ir.actions.act_window" id="view_checked_received">
+            <field name="name">Checked Received</field>
+            <field name="res_model">checked.received</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Checked Received
+                </p>
+            </field>
+        </record>
+
+        <record id="view_company_facility_equipment_form" model="ir.ui.view">
+            <field name="name">company.facility.equipment.form</field>
+            <field name="model">company.facility.equipment</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <form string="Company Facility Equipment">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="active_line" widget="boolean_toggle"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_company_facility_equipment_tree" model="ir.ui.view">
+            <field name="name">company.facility.equipment.tree</field>
+            <field name="model">company.facility.equipment</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <tree >
+                    <field name="name" required="1"/>
+                    <field name="active_line" widget="boolean_toggle"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record model="ir.actions.act_window" id="view_company_facility_equipment">
+            <field name="name">Company Facility Equipment</field>
+            <field name="res_model">company.facility.equipment</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Company Facility Equipment
+                </p>
+            </field>
+        </record>
+
+        <record id="view_it_security_access_form" model="ir.ui.view">
+            <field name="name">it.security.access.form</field>
+            <field name="model">it.security.access</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <form string="IT Security Access">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="active_line" widget="boolean_toggle"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_it_security_access_tree" model="ir.ui.view">
+            <field name="name">it.security.access.tree</field>
+            <field name="model">it.security.access</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <tree >
+                    <field name="name" required="1"/>
+                    <field name="active_line" widget="boolean_toggle"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record model="ir.actions.act_window" id="view_it_security_access">
+            <field name="name">IT Security Access</field>
+            <field name="res_model">it.security.access</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">IT Security Access
+                </p>
+            </field>
+        </record>
+
+
+        <record id="view_settlement_balance_of_loan_form" model="ir.ui.view">
+            <field name="name">settlement.balance.of.loan.form</field>
+            <field name="model">settlement.balance.of.loan</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <form string="IT Security Access">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="active_line" widget="boolean_toggle"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_settlement_balance_of_loan_tree" model="ir.ui.view">
+            <field name="name">settlement.balance.of.loan.tree</field>
+            <field name="model">settlement.balance.of.loan</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <tree >
+                    <field name="name" required="1"/>
+                    <field name="active_line" widget="boolean_toggle"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="view_settlement_balance_of_loan">
+            <field name="name">Settlement Balance Of Loan</field>
+            <field name="res_model">settlement.balance.of.loan</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Settlement Balance Of Loan
+                </p>
+            </field>
+        </record>
+
+
+        <record id="view_hc_operations_form" model="ir.ui.view">
+            <field name="name">hc.operations.form</field>
+            <field name="model">hc.operations</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <form string="IT Security Access">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="active_line" widget="boolean_toggle"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_hc_operations_tree" model="ir.ui.view">
+            <field name="name">hc.operations.tree</field>
+            <field name="model">hc.operations</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <tree >
+                    <field name="name" required="1"/>
+                    <field name="active_line" widget="boolean_toggle"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record model="ir.actions.act_window" id="view_hc_operations">
+            <field name="name">HC Operations</field>
+            <field name="res_model">hc.operations</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">HC Operations
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="employee_resignation_config"
+                  parent="employee_resignation"
+                  name="Configuration"
+                  sequence="2"/>
+
+        <menuitem id="company_facility_equipment"
+                  parent="employee_resignation_config"
+                  name="Company Facility Equipment"
+                  action="view_company_facility_equipment"
+                  sequence="1"/>
+
+        <menuitem id="it_security_access"
+                  parent="employee_resignation_config"
+                  name="IT Security Access"
+                  action="view_it_security_access"
+                  sequence="2"/>
+
+        <menuitem id="settlement_balance_of_loan"
+                  parent="employee_resignation_config"
+                  name="Settlement Balance Of Loan"
+                  action="view_settlement_balance_of_loan"
+                  sequence="3"/>
+
+        <menuitem id="hc_operations"
+                  parent="employee_resignation_config"
+                  name="HC Operations"
+                  action="view_hc_operations"
+                  sequence="4"/>
+
+        <menuitem id="checked_received"
+                  parent="employee_resignation_config"
+                  name="Checked Received"
+                  action="view_checked_received"
+                  sequence="5"/>
+
+        <menuitem id="resignation_reason"
+                  parent="employee_resignation_config"
+                  name="Resignation Reason"
+                  action="view_resignation_reason"
+                  sequence="6"/>
+
+
+        
+    </data>
+</odoo>
+
+
