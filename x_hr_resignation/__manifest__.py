@@ -20,6 +20,5 @@
         'report/hr_resignation.xml'
     ],
     'images': ['static/description/banner.png'],
-    'license': 'AGP-SX-2',
 }
 
