@@ -20,5 +20,7 @@
         'report/hr_resignation.xml'
     ],
     'images': ['static/description/banner.png'],
+    'price': 30.0,
+    'currency': 'EUR',
 }
 
