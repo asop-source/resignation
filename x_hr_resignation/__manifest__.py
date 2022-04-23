@@ -1,14 +1,14 @@
 
 {
-    'name': 'Open HRMS Resignation',
-    'version': '13.0.2.0.0',
-    'summary': 'Handle the resignation process of the employee',
-    'author': 'Cybrosys Techno solutions,Open HRMS',
-    'company': 'Cybrosys Techno Solutions',
-    'website': 'https://www.openhrms.com',
+    'name': 'HR Resignation',
+    'version': '13.',
+    'summary': 'Resignation process of the employee',
+    'author': 'Asop Source',
+    'company': 'Asop',
+    'website': 'https://www.asop-source.com',
     'depends': ['base','hr'],
-    'category': 'Generic Modules/Human Resources',
-    'maintainer': 'Cybrosys Techno Solutions',
+    'category': 'Human Resources',
+    'maintainer': 'Techno Solutions',
     'data': [
         'security/ir.model.access.csv',
         'security/security.xml',
@@ -20,6 +20,6 @@
         'report/hr_resignation.xml'
     ],
     'images': ['static/description/banner.png'],
-    'license': 'AGPL-3',
+    'license': 'AGP-SX-2',
 }
 
